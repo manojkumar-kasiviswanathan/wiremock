@@ -1,0 +1,5 @@
+{
+  "id": {{randomValue length=5 type='NUMERIC'}},
+"username": "{{request.query.username}}",
+"email": "{{request.query.email}}"
+}

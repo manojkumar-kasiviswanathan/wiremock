@@ -1,0 +1,16 @@
+version: "3.9"
+networks:
+  network-service:
+
+services:
+  wiremock-service:
+    hostname: wiremock
+    image: wiremock-img
+    container_name: wiremock-service
+    build:
+      context: .
+      dockerfile: wiremock.Dockerfile
+    ports:
+      - "8083:8083"
+    networks:
+      - network-service

@@ -1,0 +1,11 @@
+{
+  "request": {
+    "urlPath": "/templated"
+  },
+  "response": {
+    "transformers": [
+      "response-template"
+    ],
+    "bodyFileName": "user_template.json"
+  }
+}
