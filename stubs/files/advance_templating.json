@@ -1,0 +1,9 @@
+{
+  "assign": "{{#assign 'correlationId'}}{{request.headers.correlationId}}{{/assign}}{{regexExtract correlationId '([^d].$)' 'parts'}} {{#assign 'partCorrelationId'}}{{parts.0}}{{/assign}}",
+  "assignRequestBody": "{{#assign 'nino'}}{{jsonPath request.body '$.ninocheck'}}{{/assign}}{{nino}}",
+  "assignRequestBodyRegex": "{{#assign 'nino'}}{{regexExtract(jsonPath request.body '$.regex') '(.+)_(.+)' 'parts'}}{{/assign}}{{parts.1}}",
+  "START-DT": "01/01/24",
+  "END-DT": "{{now offset='3 months' format='dd/MM/yy'}}",
+  "endReason": "{{partCorrelationId}}",
+  "CurrentStatus": "{{#eq partCorrelationId 'aa'}}LIVE{{else eq partCorrelationId 'ab'}}LIVE NP{{else}}default{{/eq}}"
+}

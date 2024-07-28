@@ -1,12 +1,14 @@
 {
   "request": {
-    "urlPath": "/templated"
+    "method": "POST",
+    "urlPattern": "/api/user"
   },
   "response": {
+    "status": 200,
     "transformers": [
       "response-template"
     ],
-    "bodyFileName": "user_template.json",
+    "bodyFileName": "advance_templating.json",
     "headers": {
       "Content-Type": "application/json"
     }

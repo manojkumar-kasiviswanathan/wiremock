@@ -1,0 +1,25 @@
+version: "3.9"
+networks:
+  network-service:
+
+services:
+  wiremock-service:
+    hostname: wiremock
+    image: wiremock/wiremock
+    container_name: wiremock-service
+    volumes:
+      - type: bind
+        source: ./stubs/files
+        target: /home/wiremock/__files
+      - type: bind
+        source: ./stubs/mappings
+        target: /home/wiremock/mappings
+    command:
+      - "--verbose"
+      - "--port"
+      - "8083"
+      - "global-response-templating"
+    ports:
+      - "8083:8083"
+    networks:
+      - network-service
