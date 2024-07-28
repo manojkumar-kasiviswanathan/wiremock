@@ -1,18 +1,22 @@
 {
 	"info": {
 		"_postman_id": "a68577b1-1c44-4c3a-b3d9-476f8f6bd214",
-		"name": "Wiremock",
-		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+		"name": "04.Wiremock-docker",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "10404473"
 	},
 	"item": [
 		{
-			"name": "Request template",
-			"protocolProfileBehavior": {
-				"disableBodyPruning": true
-			},
+			"name": "01.advance_templating",
 			"request": {
-				"method": "GET",
-				"header": [],
+				"method": "POST",
+				"header": [
+					{
+						"key": "correlationId",
+						"value": "aa600588-c99a-47e7-93ce-faf4cf31f7ad",
+						"type": "text"
+					}
+				],
 				"body": {
 					"mode": "raw",
 					"raw": "",
@@ -23,7 +27,7 @@
 					}
 				},
 				"url": {
-					"raw": "http://localhost:8083/templated?username=test&email=test@email.com",
+					"raw": "http://localhost:8083/templated?username=test.user&email=test.user@test123.com",
 					"protocol": "http",
 					"host": [
 						"localhost"
@@ -35,12 +39,85 @@
 					"query": [
 						{
 							"key": "username",
-							"value": "test"
+							"value": "test.user"
 						},
 						{
 							"key": "email",
-							"value": "test@email.com"
+							"value": "test.user@test123.com"
 						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "02.not_found",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "correlationId",
+						"value": "aa600588-c99a-47e7-93ce-faf4cf31f7ad",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8083/api/user",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8083",
+					"path": [
+						"api",
+						"user"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "03.advance_templating",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "correlationId",
+						"value": "aa600588-c99a-47e7-93ce-faf4cf31f7ad",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"ninocheck\":\"AC974512B\",\n    \"regex\": \"check_test\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8083/api/user",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8083",
+					"path": [
+						"api",
+						"user"
 					]
 				}
 			},
